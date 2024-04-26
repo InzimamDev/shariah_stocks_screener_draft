@@ -1,4 +1,4 @@
-
+"""Companies file"""
 from fastapi import APIRouter
 from config.database import db_dependency
 from models.company import Company
@@ -7,6 +7,8 @@ from schemas.company import CompanyPost
 companies_router = APIRouter()
 
 # Route to create a new company (POST /companies)
+
+
 @companies_router.post("/companies")
 async def create_company(company_data: CompanyPost, db: db_dependency):
     # Add company to database
