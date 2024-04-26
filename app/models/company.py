@@ -1,8 +1,6 @@
-from typing import Optional
-from pydantic import BaseModel, Field
 from sqlalchemy import Column, Integer, String, UniqueConstraint
-from sqlalchemy.orm import sessionmaker, declarative_base
-from config.database import Base
+from app.config.database import Base
+
 
 class Company(Base):
     __tablename__ = "company"
@@ -12,5 +10,8 @@ class Company(Base):
     ticker = Column(String, unique=True)
     name = Column(String)
     website = Column(String, nullable=True)
+    test_col = Column(String, nullable=True)
+    test_new_col = Column(String, nullable=True)
 
-    __table_args__ = (UniqueConstraint('ticker', name='company_ticker_unique'),)
+    __table_args__ = (UniqueConstraint(
+        'ticker', name='company_ticker_unique'),)
